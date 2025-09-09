@@ -1,0 +1,42 @@
+import duckdb
+
+print("DuckDB version:", duckdb.__version__)
+con = duckdb.connect('swati_files.duckdb')
+
+# Create 'state' table from CSV
+con.execute("""
+    CREATE TABLE IF NOT EXISTS employee_data AS 
+    SELECT * FROM read_csv_auto('/Users/maheshda/Desktop/swati/employee_data.csv')
+""")
+print("Sample data from employee_data table:", con.execute("SELECT * FROM employee_data LIMIT 5;").fetchall())
+
+# con.execute("""
+#     CREATE TABLE IF NOT EXISTS state AS 
+#     SELECT * FROM read_csv_auto('/Users/maheshda/Desktop/swati/state_us.csv')
+# """)
+# print("Sample data from state table:", con.execute("SELECT * FROM state LIMIT 5;").fetchall())
+
+# # Create 'employment_status' table from CSV
+# con.execute("""
+#     CREATE TABLE IF NOT EXISTS employment_status AS 
+#     SELECT * FROM read_csv_auto('/Users/maheshda/Desktop/swati/employment_status.csv')
+# """)
+# print("Sample data from employment_status table:", con.execute("SELECT * FROM employment_status LIMIT 5;").fetchall())
+
+# # Example: Create another table from a different CSV
+# con.execute("""
+#     CREATE TABLE IF NOT EXISTS country AS 
+#     SELECT * FROM read_csv_auto('/Users/maheshda/Desktop/swati/country.csv')
+# """)
+# print("Sample data from country table:", con.execute("SELECT * FROM country LIMIT 5;").fetchall())
+
+# con.execute("""
+#     CREATE TABLE IF NOT EXISTS employees AS 
+#     SELECT * FROM read_csv_auto('/Users/maheshda/Desktop/swati/employees.csv')
+# """)
+# print("Sample data from employees table:", con.execute("SELECT * FROM employees LIMIT 5;").fetchall())
+# Cleanup: Drop tables if needed
+# con.execute("DROP TABLE IF EXISTS state;")
+# con.execute("DROP TABLE IF EXISTS employment_status;")
+# con.execute("DROP TABLE IF EXISTS population;")
+con.close()
