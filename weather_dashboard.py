@@ -1,9 +1,11 @@
 # filepath: [weather_dashboard.py](http://_vscodecontentref_/0)
-import streamlit as st
+import streamlit as st # type: ignore
 import requests
+import os
+from dotenv import load_dotenv
+load_dotenv() # Loads variables from .env file into os.environ
 
-# Set your Visual Crossing API key here
-API_KEY = "KTTLN64TYZNFYN7PLSYTEF2Q3"
+API_KEY = os.getenv('API_KEY') #need to set up in environment variable
 
 st.title("Weather Dashboard")
 
