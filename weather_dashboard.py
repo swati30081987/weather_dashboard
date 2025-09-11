@@ -4,7 +4,7 @@ import requests
 import os
 from dotenv import load_dotenv
 load_dotenv() # Loads variables from .env file into os.environ
-API_KEY = os.getenv('API_KEY') #need to set up in environment variable
+API_KEY = os.getenv('API_KEY')
 
 st.title("Weather Dashboard")
 
