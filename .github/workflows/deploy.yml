@@ -24,8 +24,7 @@ jobs:
       
       - name: Set API_KEY environment variable
         env:
-          API_KEY: ${{ secrets.API_KEY }} 
-        run: echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
+          API_KEY: ${{ secrets.API_KEY }}
       
       - name: Run Streamlit app (for CI test)
         run: |
